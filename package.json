@@ -12,6 +12,7 @@
     "cacheable-lookup": "^5.0.4",
     "cacheable-request": "^7.0.4",
     "clone-response": "^1.0.3",
+    "cors": "^2.8.5",
     "debug": "^4.3.7",
     "decompress-response": "^6.0.0",
     "defer-to-connect": "^2.0.1",

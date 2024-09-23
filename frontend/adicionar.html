@@ -5,6 +5,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Cadastrar Produto</title>
     <link rel="stylesheet" href="style/adicionar.css">
+    <link href="
+https://cdn.jsdelivr.net/npm/sweetalert2@11.14.1/dist/sweetalert2.min.css
+" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
 </head>
 <body>
@@ -23,48 +26,57 @@
         <aside>
             <h2>Menu</h2>
             <ul>
-                <li><a href="home.html"><i class="fas fa-home"></i>Home</a></li>
+                <li><a href="home.html"><i class="fas fa-home"></i> Home</a></li>
                 <li><a href="#"><i class="fas fa-box"></i> Produtos</a></li>
-                <li><a href="#"><i class="fas fa-truck"></i> Fornecedores</a></li>
+                <li><a href="forncedores.html"><i class="fas fa-truck"></i> Fornecedores</a></li>
                 <li><a href="#"><i class="fas fa-receipt"></i> Movimentações</a></li>
-                <li><a href="#"><i class="fas fa-chart-line"></i> Relatórios</a></li>
+                <li><a href="relatorio.html"><i class="fas fa-chart-line"></i> Relatórios</a></li>
+                <li>  <img id="imagePreview" src="" alt="Pré-visualização da imagem" style="display:none;"></li>
             </ul>
         </aside>
 
         <main>
             <h2>Adicionar Novo Produto</h2>
-            <form>
-                <div>
-                    <label for="name">Nome:</label>
-                    <input type="text" id="name" required>
-                </div>
-                <div>
-                    <label for="description">Descrição:</label>
-                    <textarea id="description" required></textarea>
-                </div>
-                <div>
-                    <label for="category">Categoria:</label>
-                    <input type="text" id="category" required>
-                </div>
-                <div>
-                    <label for="price">Preço:</label>
-                    <input type="text" id="price" required>
-                </div>
-                <div>
-                    <label for="quantity">Quantidade:</label>
-                    <input type="number" id="quantity" required>
-                </div>
-               
-                <button type="submit" class="btn-add"><i class="fas fa-save"></i> Salvar Produto</button>
-            </form>
+            <div class="product-panel">
+                <form>
+                    <div class="form-group">
+                        <label for="name">Nome:</label>
+                        <input type="text" id="name" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="description">Descrição:</label>
+                        <textarea id="description" required></textarea>
+                    </div>
+                    <div class="form-group">
+                        <label for="category">Categoria:</label>
+                        <input type="text" id="category" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="price">Preço:</label>
+                        <input type="text" id="price" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="quantity">Quantidade:</label>
+                        <input type="number" id="quantity" required>
+                    </div>
+                    <div class="form-group image-upload">
+                        <label for="image">Imagem do Produto:</label>
+                        <input type="file" id="image" accept="image/*" onchange="previewImage(event)">
+                        <img id="imagePreview" src="" alt="Pré-visualização da imagem" style="display:none;">
+                    </div>
+                    <button type="submit" class="btn-add"><i class="fas fa-save"></i> Salvar Produto</button>
+                </form>
+            </div>
         </main>
     </div>
 
     <footer>
         <p>&copy; 2024 Gerenciamento de Estoque</p>
     </footer>
+
+    <script src="script/app.js"></script>
+    <script src="
+https://cdn.jsdelivr.net/npm/sweetalert2@11.14.1/dist/sweetalert2.all.min.js
+"></script>
 </body>
-
-
-</style>
 </html>

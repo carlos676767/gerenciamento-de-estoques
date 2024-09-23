@@ -14,7 +14,8 @@ CREATE TABLE PRODUTOS (
 CREATE TABLE FORNECEDORES(
     id INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL,
     nome varchar(255) NOT NULL,
-    contato varchar(255) NOT NULL
+    contato varchar(255) NOT NULL,
+    data_cadastro varchar(255) NOT NULL
 )
 
 
@@ -25,4 +26,3 @@ CREATE TABLE MOVIMENTACOES (
     data TEXT NOT NULL,
     FOREIGN KEY (produto_id) REFERENCES PRODUTOS(id)
 );
-

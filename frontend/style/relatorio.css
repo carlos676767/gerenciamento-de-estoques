@@ -1,3 +1,45 @@
+main {
+    flex: 1;
+    padding: 20px;
+    background-color: #fff;
+}
+
+h2 {
+    margin-top: 0;
+}
+
+.form-group {
+    margin-bottom: 15px;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 5px;
+    font-weight: bold;
+}
+
+.form-group select,
+.form-group input {
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    width: 100%;
+}
+
+.btn-generate {
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    padding: 10px 15px;
+    cursor: pointer;
+    margin-top: 10px;
+}
+
+#reportOutput {
+    margin-top: 20px;
+}
+
+
 body {
     font-family: Arial, sans-serif;
     background-color: #f4f4f4;
@@ -63,49 +105,6 @@ aside ul li a i {
     margin-right: 10px;
 }
 
-main {
-    flex: 1;
-    padding: 20px;
-    background-color: #fff;
-}
-
-main h2 {
-    margin-top: 0;
-}
-
-table {
-    width: 100%;
-    border-collapse: collapse;
-}
-
-table,
-th,
-td {
-    border: 1px solid #ddd;
-}
-
-th,
-td {
-    padding: 10px;
-    text-align: left;
-}
-
-th {
-    background-color: #f2f2f2;
-}
-
-.btn-add {
-    background-color: #4CAF50;
-    color: white;
-    border: none;
-    padding: 10px 15px;
-    cursor: pointer;
-    margin-top: 10px;
-}
-
-.btn-add i {
-    margin-right: 5px;
-}
 
 footer {
     text-align: center;
@@ -116,12 +115,3 @@ footer {
     bottom: 0;
     width: 100%;
 }
-
-
-* {
-    margin: 0;
-    padding: 0;
-}
-
-
-

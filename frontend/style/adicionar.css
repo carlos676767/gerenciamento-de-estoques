@@ -126,3 +126,164 @@ footer {
     margin: 0;
     padding: 0;
 }
+
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f4f4f4;
+    margin: 0;
+    padding: 0;
+}
+
+header {
+    background-color: #4CAF50;
+    color: white;
+    padding: 10px 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+nav ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+}
+
+nav ul li {
+    margin-left: 20px;
+}
+
+nav ul li a {
+    color: white;
+    text-decoration: none;
+}
+
+.container {
+    display: flex;
+    padding: 20px;
+}
+
+aside {
+    width: 200px;
+    background-color: #fff;
+    border-right: 1px solid #ddd;
+    padding: 15px;
+}
+
+aside h2 {
+    margin-top: 0;
+}
+
+aside ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+aside ul li a {
+    text-decoration: none;
+    color: #333;
+    display: flex;
+    align-items: center;
+    padding: 8px 0;
+}
+
+aside ul li a i {
+    margin-right: 10px;
+}
+
+main {
+    flex: 1;
+    padding: 20px;
+    background-color: #fff;
+}
+
+main h2 {
+    margin-top: 0;
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+}
+
+form div {
+    margin-bottom: 15px;
+}
+
+form label {
+    margin-bottom: 5px;
+    font-weight: bold;
+}
+
+form input,
+form textarea {
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    width: 100%;
+}
+
+form textarea {
+    resize: vertical; /* Permite redimensionar apenas verticalmente */
+}
+
+.btn-add {
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    padding: 10px 15px;
+    cursor: pointer;
+    margin-top: 10px;
+}
+
+.btn-add i {
+    margin-right: 5px;
+}
+
+footer {
+    text-align: center;
+    padding: 10px;
+    background-color: #4CAF50;
+    color: white;
+    position: relative; /* Mudei para relativo para evitar problemas de posicionamento */
+    bottom: 0;
+    width: 100%;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+}
+
+
+
+/* Adicione este trecho ao seu CSS existente */
+
+/* Estilo para a pré-visualização da imagem */
+#imagePreview {
+    margin-top: 10px;
+    max-width: 200px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    display: none; /* Inicialmente oculto */
+}
+
+
+.image-upload {
+    display: flex;
+    align-items: center; /* Alinha verticalmente */
+    margin-bottom: 15px; /* Espaçamento inferior */
+}
+
+.image-upload input {
+    margin-right: 10px; /* Espaçamento entre o input e a imagem */
+}
+
+#imagePreview {
+    margin-top: 0;
+    max-width: 200px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    display: none; /* Inicialmente oculto */
+}

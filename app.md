@@ -17,6 +17,7 @@ Um aplicativo desktop para ajudar pequenas empresas a gerenciar seu estoque de f
   - Movimentações
   - Relatórios
 
+  
 - **Área de Conteúdo**:
   - Tabela de Produtos com colunas: Nome, Descrição, Categoria, Preço, Quantidade, Fornecedor.
   - Campo de Pesquisa para buscar produtos.

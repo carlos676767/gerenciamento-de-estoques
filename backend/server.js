@@ -4,7 +4,9 @@ class Express {
   static api = require("express")();
   static bodyParser = require('body-parser')
   static apii = require('./router/rota');
+  static cors = require('cors')
   static configExpress() {
+    this.api.use(this.cors())
     this.api.use(this.bodyParser.json())
     this.api.use(this.apii)
     this.api.listen(8080, () => {
