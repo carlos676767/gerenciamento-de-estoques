@@ -96,7 +96,8 @@ form textarea {
 }
 
 form textarea {
-    resize: vertical; /* Permite redimensionar apenas verticalmente */
+    resize: vertical;
+    /* Permite redimensionar apenas verticalmente */
 }
 
 .btn-add {
@@ -117,7 +118,8 @@ footer {
     padding: 10px;
     background-color: #4CAF50;
     color: white;
-    position: relative; /* Mudei para relativo para evitar problemas de posicionamento */
+    position: relative;
+    /* Mudei para relativo para evitar problemas de posicionamento */
     bottom: 0;
     width: 100%;
 }
@@ -225,7 +227,8 @@ form textarea {
 }
 
 form textarea {
-    resize: vertical; /* Permite redimensionar apenas verticalmente */
+    resize: vertical;
+    /* Permite redimensionar apenas verticalmente */
 }
 
 .btn-add {
@@ -246,7 +249,8 @@ footer {
     padding: 10px;
     background-color: #4CAF50;
     color: white;
-    position: relative; /* Mudei para relativo para evitar problemas de posicionamento */
+    position: relative;
+    /* Mudei para relativo para evitar problemas de posicionamento */
     bottom: 0;
     width: 100%;
 }
@@ -266,18 +270,22 @@ footer {
     max-width: 200px;
     border: 1px solid #ddd;
     border-radius: 4px;
-    display: none; /* Inicialmente oculto */
+    display: none;
+    /* Inicialmente oculto */
 }
 
 
 .image-upload {
     display: flex;
-    align-items: center; /* Alinha verticalmente */
-    margin-bottom: 15px; /* Espaçamento inferior */
+    align-items: center;
+    /* Alinha verticalmente */
+    margin-bottom: 15px;
+    /* Espaçamento inferior */
 }
 
 .image-upload input {
-    margin-right: 10px; /* Espaçamento entre o input e a imagem */
+    margin-right: 10px;
+    /* Espaçamento entre o input e a imagem */
 }
 
 #imagePreview {
@@ -285,5 +293,12 @@ footer {
     max-width: 200px;
     border: 1px solid #ddd;
     border-radius: 4px;
-    display: none; /* Inicialmente oculto */
+    display: none;
+    /* Inicialmente oculto */
+}
+
+select {
+    width: 100%;
+    padding: 10px;
+    border-radius: 5px;
 }

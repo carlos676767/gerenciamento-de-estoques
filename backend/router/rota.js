@@ -1,8 +1,11 @@
 const Forncedor = require('../controller/cadastarFornecedor')
 const Produtos = require('../controller/CadastrarProduto')
+const Forncedoress = require('../controller/GetForncedores')
+const Forncedores = require('../controller/GetForncedores')
 const getProdutos = require('../controller/GetProdutos')
 const apii = require('express').Router()
 apii.post('/post/product',Produtos.routerProducy)
 apii.get('/produtos', getProdutos.listProduct)
 apii.post('/forncedores', Forncedor.RouterFor)
+apii.get('/forncedores', Forncedoress.selectFormnecores)
 module.exports = apii

@@ -13,8 +13,8 @@ CREATE TABLE PRODUTOS (
 
 CREATE TABLE FORNECEDORES(
     id INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL,
-    nome varchar(255) NOT NULL,
-    contato varchar(255) NOT NULL,
+    nome_forncedor varchar(255) NOT NULL,
+    contato varchar(255) UNIQUE NOT NULL,
     data_cadastro varchar(255) NOT NULL
 )
 

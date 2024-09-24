@@ -12,6 +12,7 @@ class Produtos {
       categoria: this.#category.value.trim(),
       preco: this.#price.value.trim(),
       quantidade: this.#quantity.value.trim(),
+      id: 2
     };
   }
 
@@ -29,7 +30,7 @@ class Produtos {
       if (response.ok) {
         this.#alertaProdutoSucesso();
         this.limparInput();
-        return
+        return;
       }
       this.#alertaFalha(data.msg);
     } catch (error) {
@@ -71,3 +72,27 @@ class Produtos {
   }
 }
 Produtos.buttonEvent();
+
+class Forncedores {
+  static #select = document.querySelector("select");
+  static option = document.querySelectorAll('option')
+  static async getFornecedores() {
+    const data = await fetch("http://localhost:8080/forncedores");
+    if (data.ok) {
+      const { msg } = await data.json();
+      Forncedores.listFornecedores(msg);
+    }
+  }
+
+  static listFornecedores(list) {
+    list.forEach((element) => {
+      const { id, nome_forncedor } = element;
+      this.#select.innerHTML += `<option data-id=${id}>${nome_forncedor}</option>`
+      console.log(this.option);
+      
+    });
+    
+  }
+}
+
+Forncedores.getFornecedores();
