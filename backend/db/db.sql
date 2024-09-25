@@ -16,7 +16,7 @@ CREATE TABLE FORNECEDORES(
     nome_forncedor varchar(255) NOT NULL,
     contato varchar(255) UNIQUE NOT NULL,
     data_cadastro varchar(255) NOT NULL
-)
+);
 
 
 CREATE TABLE MOVIMENTACOES (

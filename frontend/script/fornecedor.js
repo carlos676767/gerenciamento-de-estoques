@@ -3,7 +3,6 @@ class forncedor {
   static #contato = document.getElementById("contato");
   static #botao = document.querySelector('button')
   static objetoForncedores() {
-    alert( this.#nome.value)
     return {
       nome: this.#nome.value.trim(),
       telefone: this.#contato.value.trim(),

@@ -1,21 +1,43 @@
+const select = document.querySelector("select");
+
+class Forncedores {
+  static async getFornecedores() {
+    const data = await fetch("http://localhost:8080/forncedores");
+    if (data.ok) {
+      const { msg } = await data.json();
+      Forncedores.listFornecedores(msg);
+    };
+  };
+
+  static listFornecedores(list) {
+    list.forEach((element) => {
+      const { id, nome_forncedor } = element;
+      select.innerHTML += `<option value=${id}>${nome_forncedor}</option>`;
+    });
+  };
+};
+
+Forncedores.getFornecedores();
+
 class Produtos {
   static #name = document.getElementById("name");
   static #description = document.getElementById("description");
   static #category = document.getElementById("category");
   static #price = document.getElementById("price");
   static #quantity = document.getElementById("quantity");
-  static #button = document.querySelector("button");
+  static form = document.querySelector('form');
   static #objetoProdutos() {
+
     return {
       nome: this.#name.value.trim(),
       descricao: this.#description.value.trim(),
       categoria: this.#category.value.trim(),
       preco: this.#price.value.trim(),
       quantidade: this.#quantity.value.trim(),
-      id: 2
+      id: select.value,
     };
   }
-
+  
   static async #cadastrarProduto() {
     try {
       const response = await fetch("http://localhost:8080/post/product", {
@@ -32,6 +54,7 @@ class Produtos {
         this.limparInput();
         return;
       }
+
       this.#alertaFalha(data.msg);
     } catch (error) {
       console.log(error);
@@ -57,9 +80,9 @@ class Produtos {
   }
 
   static buttonEvent() {
-    this.#button.addEventListener("click", (e) => {
+    this.form.addEventListener("submit", async (e) => {
       e.preventDefault();
-      this.#cadastrarProduto();
+      await this.#cadastrarProduto();
     });
   }
 
@@ -70,29 +93,7 @@ class Produtos {
     this.#price.value = "";
     this.#quantity.value = "";
   }
+
 }
+
 Produtos.buttonEvent();
-
-class Forncedores {
-  static #select = document.querySelector("select");
-  static option = document.querySelectorAll('option')
-  static async getFornecedores() {
-    const data = await fetch("http://localhost:8080/forncedores");
-    if (data.ok) {
-      const { msg } = await data.json();
-      Forncedores.listFornecedores(msg);
-    }
-  }
-
-  static listFornecedores(list) {
-    list.forEach((element) => {
-      const { id, nome_forncedor } = element;
-      this.#select.innerHTML += `<option data-id=${id}>${nome_forncedor}</option>`
-      console.log(this.option);
-      
-    });
-    
-  }
-}
-
-Forncedores.getFornecedores();
