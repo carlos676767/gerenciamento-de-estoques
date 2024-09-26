@@ -1,5 +1,4 @@
 const Sql = require("../db/db");
-//JOIN FORNECEDORES ON PRODUTOS.id = FORNECEDORES.id ORDER BY
 class getProdutos {
   static async listProduct(req, res) {
     try {
@@ -12,7 +11,7 @@ class getProdutos {
       }
 
       const produtoFormatado = result.map(({id_fornecedor,data_cadastro, id, ...resto  }) => resto);
-      console.log(produtoFormatado);
+    
       
       res.status(200).send({produtos: produtoFormatado})
     } catch (error) {

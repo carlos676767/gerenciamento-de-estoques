@@ -7,10 +7,10 @@ class Express {
   static cors = require("cors");
 
   static configExpress() {
-    const expressApi = this.api();
+    const expressApi = this.api()
+    expressApi.use(this.bodyParser.json());;
     expressApi.use(this.apii)
     expressApi.use(this.cors());
-    expressApi.use(this.bodyParser.json());
     expressApi.use(this.api.static("public"));
 
     expressApi.listen(8080, () => {
@@ -21,4 +21,3 @@ class Express {
 }
 
 Express.configExpress();
-Pdf.Router()
