@@ -10,25 +10,29 @@ class Excel {
       }
 
       await Excel.gerarExcel(inicio, fim, opcao, res);
+
     } catch (error) {
       res.status(400).send({ msg: error.message });
     }
   }
 
   static async buscarDadosDb(inicio, fim, option) {
+    if (!inicio || !fim || !option) {
+      throw new Error("Por favor preencha os dados.");
+    }
+
     const db = await this.database.db();
     const inicioData = inicio.split("-").reverse().join("/");
     const fimData = fim.split("-").reverse().join("/");
-    const query = `SELECT * FROM ${option} WHERE data_cadastro = '${inicioData}' AND data_cadastro = '${fimData}'`;
+    const query = `SELECT * FROM ${option} WHERE data_cadastro BETWEEN ? AND ?`;
 
-    const result = await db.all(query);
-    
-    if (result.length == []) {
-      console.log(result);
-      throw new Error(`Nao ha valores para as data selecionadas.`);
+    const result = await db.all(query, [inicioData, fimData]);
+
+    if (result.length == 0) {
+      throw new Error(`Nenhum valor encontrado para as datas selecionadas. Verifique os filtros aplicados e tente novamente.`);
     }
 
-    return result;
+    return result.sort();
   }
 
   static async gerarExcel(inicio, fim, option, res) {
@@ -42,9 +46,10 @@ class Excel {
     }
 
     objectSelecao[option] 
-    
-    res.status(200).send({msg: `http://localhost:8080/${option}.xlsx`})
+    res.download(`E://gerenciamento de estoques//backend//public//${option}.xlsx`)
+    // res.status(200).send({msg: `E://gerenciamento de estoques//backend//public//${option}`})
   }
+
 
   static #gerarRelatorioFornecedores(result, planilha, plaanilha, option){
     planilha.columns = [
@@ -112,10 +117,7 @@ class Excel {
     ];
 
     result.forEach((data) => {
-      (planilha.addRow(data).alignment = {
-        vertical: "middle",
-        horizontal: "center",
-      })
+      (planilha.addRow(data).alignment = { vertical: "middle", horizontal: "center", })
     });
 
     plaanilha.xlsx.writeFile(`E:/gerenciamento de estoques/backend/public/${option}.xlsx` );

@@ -7,7 +7,6 @@ class Forncedor {
       const formatarNumero = telefone.replace( /(\d{2})(\d{5})(\d{4})/,"($1) $2-$3");
       const nomeFormatado = nome.toLowerCase()
       await Forncedor.adicionarForncedores(nomeFormatado, formatarNumero);
-      console.log('aaaaa');
       
       res.status(200).send({ msg: "fornecedor cadastrado com sucesso.", cadastro: true });
     } catch (error) {

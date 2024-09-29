@@ -3,16 +3,14 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Cadastrar Produto</title>
+    <title>Gerenciar Produto</title>
     <link rel="stylesheet" href="style/adicionar.css">
-    <link href="
-https://cdn.jsdelivr.net/npm/sweetalert2@11.14.1/dist/sweetalert2.min.css
-" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/sweetalert2@11.14.1/dist/sweetalert2.min.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
 </head>
 <body>
     <header>
-        <h1><i class="fas fa-box"></i> Cadastrar Produto</h1>
+        <h1><i class="fas fa-box"></i> Gerenciar Produto</h1>
         <nav>
             <ul>
                 <li><a href="#">Arquivo</a></li>
@@ -21,65 +19,114 @@ https://cdn.jsdelivr.net/npm/sweetalert2@11.14.1/dist/sweetalert2.min.css
             </ul>
         </nav>
     </header>
-    
+
     <div class="container">
         <aside>
             <h2>Menu</h2>
             <ul>
                 <li><a href="home.html"><i class="fas fa-home"></i> Home</a></li>
-                <li><a href="#"><i class="fas fa-box"></i> Produtos</a></li>
+                <li><a href="adicionar.html"><i class="fas fa-box"></i> Produtos</a></li>
                 <li><a href="forncedores.html"><i class="fas fa-truck"></i> Fornecedores</a></li>
-                <li><a href="#"><i class="fas fa-receipt"></i> Movimentações</a></li>
+                <li><a href="movimentacoes.html"><i class="fas fa-receipt"></i> Movimentações</a></li>
                 <li><a href="relatorio.html"><i class="fas fa-chart-line"></i> Relatórios</a></li>
-                <li>  <img id="imagePreview" src="" alt="Pré-visualização da imagem" style="display:none;"></li>
             </ul>
         </aside>
 
         <main>
-            <h2>Adicionar Novo Produto</h2>
-            <div class="product-panel">
-                <form>
+            <h2>Gerenciar Produto</h2>
+            <div class="product-grid">
+                <!-- Seção do Formulário de Produto -->
+                <div class="product-form">
+                    <form id="productForm">
+                        <div class="form-group">
+                            <label for="name">Nome:</label>
+                            <input type="text" id="name" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="description">Descrição:</label>
+                            <textarea id="description" required></textarea>
+                        </div>
+                        <div class="form-group">
+                            <label for="category">Categoria:</label>
+                            <input type="text" id="category" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="price">Preço:</label>
+                            <input type="text" id="price" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="quantity">Quantidade:</label>
+                            <input type="number" id="quantity" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="supplier">Fornecedor:</label>
+                            <select id="supplier" name="supplier">
+                                <option value="">Selecionar Fornecedor</option>
+                            </select>
+                        </div>
+                        <button class="btn-add"><i class="fas fa-save"></i> Salvar Produto</button>
+                    </form>
+                </div>
+
+                <!-- Seção de Gerenciamento do Produto (Editar, Vender, Excluir) -->
+                <div class="product-actions">
+                    <h3>Ações do Produto</h3>
                     <div class="form-group">
-                        <label for="name">Nome:</label>
-                        <input type="text" id="name" required>
+                        <label for="productIdAction">ID do Produto:</label>
+                        <input type="text" id="productIdAction" placeholder="Insira o ID para realizar ações">
                     </div>
-                    <div class="form-group">
-                        <label for="description">Descrição:</label>
-                        <textarea id="description" required></textarea>
-                    </div>
-                    <div class="form-group">
-                        <label for="category">Categoria:</label>
-                        <input type="text" id="category" required>
-                    </div>
-                    <div class="form-group">
-                        <label for="price">Preço:</label>
-                        <input type="text" id="price" required>
-                    </div>
-                    <div class="form-group">
-                        <label for="quantity">Quantidade:</label>
-                        <input type="number" id="quantity" required>
-                    </div>
-                  
 
                     <div class="form-group">
-                        <select name="select">
-                            <option value="valor1">Lista fornecedores</option>
-                           
-                          </select>
+                        <button id="editProduct" class="btn-edit"><i class="fas fa-edit"></i> Editar Produto</button>
+                        <button id="deleteProduct" class="btn-delete"><i class="fas fa-trash"></i> Excluir Produto</button>
                     </div>
-                    <button  class="btn-add"><i class="fas fa-save"></i> Salvar Produto</button>
-                </form>
+                </div>
+            </div>
+            <div class="edit-product-container" >
+                <div class="edit-product-box">
+                    <h1><i class="fas fa-edit"></i> Editar Produto</h1>
+                    <form id="editProductForm">
+                        <div class="form-group">
+                            <label for="productName">Id do produto:</label>
+                            <input type="text" id="id" placeholder="Digite o id do produto" required>
+                        </div>
+
+                        
+                        <div class="form-group">
+                            <label for="productDescription">Selecione um abaixo para editar:</label>
+                           <select name="" id="selectprodutos">
+                            <option value="nome">
+                                nome do produto
+                            </option>
+                            <option value="categoria">
+                                categoria
+                            </option>
+                            <option value="valor">
+                                valor
+                            </option>
+                           </select>
+
+                        </div>
+                        <div class="form-group">
+                            <label for="productValue">Valor:</label>
+                            <input type="text" id="productValue" placeholder="Digite o novo valor" required step="0.01">
+                        </div>
+                        <button type="submit" class="btn-edit-product"><i class="fas fa-save"></i> Salvar Alterações</button>
+                        <button type="button" class="btn-cancel" ><i class="fas fa-times"></i> Cancelar</button>
+                    </form>
+                    
+                </div>
             </div>
         </main>
+        
     </div>
 
+  
     <footer>
         <p>&copy; 2024 Gerenciamento de Estoque</p>
     </footer>
 
     <script src="script/app.js"></script>
-    <script src="
-https://cdn.jsdelivr.net/npm/sweetalert2@11.14.1/dist/sweetalert2.all.min.js
-"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11.14.1/dist/sweetalert2.all.min.js"></script>
 </body>
 </html>

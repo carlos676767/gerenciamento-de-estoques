@@ -97,3 +97,100 @@ class Produtos {
 }
 
 Produtos.buttonEvent();
+
+
+class deleteProduto {
+  static btnDelete = document.getElementById('deleteProduct')
+  static input = document.getElementById('productIdAction')
+  static objectValue(){
+    return {
+      id: this.input.value
+    }
+  }
+
+  static async deletarProduto(){
+   try {
+    const data = await fetch(`http://localhost:8080/deleteProduto/${this.objectValue().id}`,{
+      method: 'DELETE'
+    })
+    const {msg} = await data.json()
+    if (data.ok) {
+      alert(msg)
+    }
+    alert(msg)
+   } catch (error) {
+    console.log(error);
+   }
+  }
+
+  static eventBtnDelete(){
+    this.btnDelete.addEventListener('click', () => {
+      this.deletarProduto()
+    })
+  }
+}
+
+deleteProduto.eventBtnDelete()
+
+
+
+class EditProduto {
+  static editproductcontainerDIv = document.querySelector( ".edit-product-container" );
+  static editProduct = document.getElementById("editProduct");
+
+  static buttonCancel = document.querySelector(".btn-cancel");
+  static eventButtonAbrirDiv() {
+    this.editProduct.addEventListener("click", () => {
+      this.editproductcontainerDIv.style.display = "block";
+      this.editproductcontainerDIv.style.display = "flex";
+    });
+  }
+
+  static fecharDiv() {
+    this.buttonCancel.addEventListener("click", () => {
+      this.editproductcontainerDIv.style.display = "none";
+    });
+  }
+
+  static objectValues(){
+    const selectprodutos = document.getElementById("selectprodutos")
+    const id = document.getElementById('id')
+    const input = document.getElementById("productValue")
+    return {
+      value: selectprodutos.value,
+      id: id.value.trim(),
+      input: input.value.trim()
+    }
+  }
+
+  static async requestEditProduct(){
+    try {
+      const data = await fetch('http://localhost:8080/atuaizarProduto', {
+        method: 'PATCH',
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(this.objectValues())
+      })
+      const res = await data.json()
+      alert(JSON.stringify(res))
+    } catch (error) {
+      
+    }
+  }
+
+  static buttonEventEnviarEdit(){
+    const btneditproduct = document.querySelector('.btn-edit-product')
+    btneditproduct.addEventListener('click', (e) => {
+      e.preventDefault()
+      alert('aaa')
+      this.requestEditProduct()
+    })
+  }
+}
+
+
+EditProduto.eventButtonAbrirDiv()
+EditProduto.fecharDiv()
+EditProduto.buttonEventEnviarEdit()
+

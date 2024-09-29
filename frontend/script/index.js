@@ -6,7 +6,7 @@ class ElectronJs {
       width: 800,
       height: 600,
     });
-    win.loadFile("E://gerenciamento de estoques//frontend//home.html");
+    win.loadFile("E://gerenciamento de estoques//frontend//login.html");
   }
   static async loadElectron() {
     await app.whenReady();

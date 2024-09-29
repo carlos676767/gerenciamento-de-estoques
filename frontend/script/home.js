@@ -4,8 +4,8 @@ class Itens {
     const getItens = await fetch("http://localhost:8080/produtos");
     const response = await getItens.json();
     
-    response.produtos.forEach((element) => {
-      const { nome, descricao, valor, quantidade, data_cadastro, categoria, nome_forncedor } = element;
+    response.msg.forEach((element) => {
+      const { nome, descricao, valor, quantidade, data_cadastro, categoria, nome_forncedor, id_produtos } = element;
       this.tbody.innerHTML += `<tr>
       <td>${nome}</td>
       <td>${descricao}</td>
@@ -13,6 +13,7 @@ class Itens {
       <td>${valor}</td>
       <td>${quantidade}</td>
       <td>${nome_forncedor}</td>
+       <td>${id_produtos}</td>
      </tr>`;
     });
   }
