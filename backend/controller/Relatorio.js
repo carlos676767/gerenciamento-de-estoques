@@ -4,13 +4,12 @@ class Excel {
   static async Router(req, res) {
     try {
       const { inicio, fim, opcao } = req.body;
-
+      
       if (opcao === "selecione") {
         throw new Error("Selecione uma opcao valida.");
       }
 
       await Excel.gerarExcel(inicio, fim, opcao, res);
-
     } catch (error) {
       res.status(400).send({ msg: error.message });
     }
@@ -29,7 +28,7 @@ class Excel {
     const result = await db.all(query, [inicioData, fimData]);
 
     if (result.length == 0) {
-      throw new Error(`Nenhum valor encontrado para as datas selecionadas. Verifique os filtros aplicados e tente novamente.`);
+      throw new Error( `Nenhum valor encontrado para as datas selecionadas. Verifique os filtros aplicados e tente novamente.`);
     }
 
     return result.sort();
@@ -40,18 +39,18 @@ class Excel {
     const planilha = plaanilha.addWorksheet("planilha.xlsx");
     const result = await Excel.buscarDadosDb(inicio, fim, option);
 
+    
     const objectSelecao = {
-      FORNECEDORES: Excel.#gerarRelatorioFornecedores(result, planilha, plaanilha, option),
-      PRODUTOS: Excel.#gerarRelatorioProdutos(result, planilha, plaanilha, option)
-    }
-
-    objectSelecao[option] 
-    res.download(`E://gerenciamento de estoques//backend//public//${option}.xlsx`)
-    // res.status(200).send({msg: `E://gerenciamento de estoques//backend//public//${option}`})
+      FORNECEDORES: Excel.#gerarRelatorioFornecedores( result,planilha, plaanilha,option ),
+      PRODUTOS: Excel.#gerarRelatorioProdutos(result, planilha, plaanilha,option ),
+    };
+    
+    objectSelecao[option];
+    res.send( {url: `${option}.xlsx`} );
+   
   }
 
-
-  static #gerarRelatorioFornecedores(result, planilha, plaanilha, option){
+  static #gerarRelatorioFornecedores(result, planilha, plaanilha, option) {
     planilha.columns = [
       {
         header: "nome",
@@ -82,18 +81,18 @@ class Excel {
     ];
 
     result.forEach((data) => {
-      (planilha.addRow(data).alignment = {
+      planilha.addRow(data).alignment = {
         vertical: "middle",
         horizontal: "center",
-      })
+      };
     });
 
-    plaanilha.xlsx.writeFile(`E:/gerenciamento de estoques/backend/public/${option}.xlsx` );
+    plaanilha.xlsx.writeFile(
+      `E:/gerenciamento de estoques/backend/public/${option}.xlsx`
+    );
   }
 
-
-
-  static #gerarRelatorioProdutos(result, planilha, plaanilha, option){
+  static #gerarRelatorioProdutos(result, planilha, plaanilha, option) {
     planilha.columns = [
       {
         header: "nome_forncedor",
@@ -117,12 +116,16 @@ class Excel {
     ];
 
     result.forEach((data) => {
-      (planilha.addRow(data).alignment = { vertical: "middle", horizontal: "center", })
+      planilha.addRow(data).alignment = {
+        vertical: "middle",
+        horizontal: "center",
+      };
     });
 
-    plaanilha.xlsx.writeFile(`E:/gerenciamento de estoques/backend/public/${option}.xlsx` );
+    plaanilha.xlsx.writeFile(
+      `E:/gerenciamento de estoques/backend/public/${option}.xlsx`
+    );
   }
-
 }
 
 module.exports = Excel;

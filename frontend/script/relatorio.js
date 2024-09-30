@@ -13,7 +13,6 @@ class Relatorio {
   }
 
   static async RelatorioGerar() {
-    alert(JSON.stringify(this.objectValues()));
     try {
       const data = await fetch("http://localhost:8080/getrelatorios", {
         method: "POST",
@@ -22,28 +21,44 @@ class Relatorio {
         },
         body: JSON.stringify(this.objectValues()),
       });
-      console.log(data);
-      
-      const { msg } = await data.json();
 
-      const msgHttpValide = msg.substr(0, 4);
-      if (msgHttpValide === "http") {
-        location.href = msg;
+      const reseponse = await data.json()
+      if (reseponse.url) {
+        location.href =  `http://localhost:8080/${reseponse.url}`
+        return
       }
+      
+      this.#alertaFalha(reseponse.msg)
     } catch (error) {
       console.log(error);
     }
   }
 
+
+
+  static #alertaFalha(msg) {
+    Swal.fire({
+      icon: "error",
+      title: "Falha ao conusltar relatorio!",
+      text: msg,
+      confirmButtonText: "OK",
+    });
+  }
+
   static buttonEvent() {
     this.button.addEventListener("click", (e) => {
-      this.RelatorioGerar();
       e.preventDefault();
+      this.RelatorioGerar();
     });
   }
 }
 
 Relatorio.buttonEvent();
+
+
+
+
+
 
 class staticasRelatorios {
   static #totalFornecedores = document.getElementById("totalFornecedores");
@@ -64,14 +79,10 @@ class staticasRelatorios {
   }
 
   static async exibirItens() {
-    const forncedores = await staticasRelatorios.#getInforRelatorios(
-      "forncedores"
-    );
+    const forncedores = await staticasRelatorios.#getInforRelatorios( "forncedores" );
     const produtos = await staticasRelatorios.#getInforRelatorios("produtos");
     const vendas = await staticasRelatorios.#getInforRelatorios("getVendas");
-    const movimentacoes = await staticasRelatorios.#getInforRelatorios(
-      "getmovimentacoes"
-    );
+    const movimentacoes = await staticasRelatorios.#getInforRelatorios("getmovimentacoes" );
     this.#totalFornecedores.innerText = forncedores;
     this.#totalItens.innerHTML = produtos;
     this.#totalMovimentacoes.innerHTML = movimentacoes;

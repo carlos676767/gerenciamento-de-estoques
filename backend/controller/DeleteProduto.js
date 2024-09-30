@@ -1,4 +1,5 @@
-class Produtos {
+class Produtos
+ {
   static database = require("../db/db");
   static async router(req, res) {
     const id = req.params.id;

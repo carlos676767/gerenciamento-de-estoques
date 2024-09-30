@@ -29,10 +29,14 @@ class Produtos {
         body: JSON.stringify(this.objectValue()),
       });
       const res = await data.json()
-      console.log(res);
+      if (data.status == 200) {
+        this.alerta()
+      }
       
+      this.falha(res.msg)
     } catch (error) {
-
+      console.log(error);
+      
     }
   }
 
@@ -42,6 +46,24 @@ class Produtos {
       this.eventMovimentacoes();
       e.preventDefault();
     });
+  }
+
+  static alerta(){
+    Swal.fire({
+      icon: 'success',
+      title: 'Sucesso!',
+      text: 'A movimentação do produto foi feita com sucesso.'
+    });
+    
+  }
+
+  static falha(msg){
+    Swal.fire({
+      icon: 'error',
+      title: 'Erro!',
+      text: `${msg}`
+    });
+    
   }
 }
 

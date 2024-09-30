@@ -17,6 +17,7 @@ class Senha {
     if (!senha || !nome || !senhaAntiga) {
       throw new Error("Por favor, preencha todos os campos obrigatórios: nome, senha e senha antiga." );
     }
+    
 
     if (senha.length < 8) {
       throw new Error("A nova senha deve ter no mínimo 8 caracteres.");

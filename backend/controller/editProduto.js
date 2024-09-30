@@ -24,8 +24,7 @@ class ProdutosEdit {
       const database = await this.db.db();
       const query = `UPDATE PRODUTOS SET ${value} = ? WHERE id_produtos = ?`;
       const result = await database.run(query, [input, id]);
-      console.log(result);
-      
+   
       if (result.changes > 0) {
 
         res.status(200).send({ success: "Produto atualizado com sucesso." });
